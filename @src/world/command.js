@@ -24,7 +24,6 @@ class Command {
         if (this.#socket.readyState !== OPEN) return { statusCode: -1, statusMessage: "WebSocket is not opening." };
         if (commandLine.startsWith("/")) commandLine = commandLine.slice(1);
 
-        console.log("Run Command:", commandLine);
         return new Promise((resolve, reject) => {
             const requestId = uuidv4();
     
@@ -55,7 +54,6 @@ class Command {
             }, 1000 * 5);
 
             this.#requests.set(requestId, (data) => {
-                // console.log(data);
                 clearTimeout(timeout);
                 resolve(data);
             });

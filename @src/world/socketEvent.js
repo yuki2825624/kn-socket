@@ -9,9 +9,9 @@ class SocketEvent {
     constructor(socket) {
         this.#socket = socket;
         socket.on("message", (data, isBinary) => {
-            if (isBinary) return console.error("[Invalid] data is binary");
+            if (isBinary) throw Error("data must not be binary");
             let packet = null;
-            try { packet = JSON.parse(data.toString()); } catch (e) { console.error(e, e.stack); };
+            try { packet = JSON.parse(data.toString()); } catch (e) {};
             if (!packet) return;
             const { eventName, messagePurpose } = packet.header;
             if (messagePurpose !== "event") return;

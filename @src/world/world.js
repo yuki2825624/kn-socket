@@ -39,12 +39,9 @@ class World {
                     if (type === "tell") { // MEMO: 何故かnameTag返ってくる
                         this.events.emit("tellChat", { message, sender: packet.sender, receiver: packet.receiver });
                     }
-                    console.log(packet);
                 });
 
                 this.events.emit("connection");
-
-                console.log("[Debug] Connection");
                 
                 let currentTick = 0, lastTime = Date.now();
                 const handle = () => {
@@ -62,8 +59,6 @@ class World {
 
             this.#ws.on("close", () => this.events.emit("close"));
             this.#ws.on("error", (error) => this.events.emit("error", error));
-
-            console.log("Ready");
         }, 1000 * 2);
     }
 
@@ -71,7 +66,7 @@ class World {
         return this.#data.currentPlayerCount;
     }
 
-    get maxPlayercount() {
+    get maxPlayerCount() {
         return this.#data.maxPlayerCount;
     }
 
