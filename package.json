@@ -6,11 +6,11 @@
     "scripts": {
         "example": "node ./example.js"
     },
-    "main": "./source/index.js",
-    "types": "./source/index.d.ts",
+    "main": "./@src/index.js",
+    "types": "./@src/index.d.ts",
     "exports": {
-        "types": "./source/index.d.ts",
-        "require": "./source/index.js"
+        "types": "./@src/index.d.ts",
+        "require": "./@src/index.js"
     },
     "keywords": [
         "minecraft",
