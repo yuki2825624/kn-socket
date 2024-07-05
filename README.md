@@ -3,72 +3,72 @@
 - @minecraft/server モジュールをもとに作成したため、ScriptAPIのような使用感でコーディングが出来ます。
 - 日本語のみ対応しています。 (Only Japanese is supported)
 
-## 機能一覧
-### イベント
-- connection
+# 機能一覧
+## イベント
+### connection
 > WebSocket への接続時
 
-- close
+### close
 > WebSocket の切断時
 
-- tick
+### tick
 > 毎tick (50ms)
-**Properties**
-- currentTick
+#### Properties
+**currentTick**
 `read-only currentTick: number;`
 開始時からの現在のtick数
 
-- deltaTime
+**deltaTime**
 `read-only deltaTime: number;`
 1tick前の時間(ms)と現在の時間(ms)の差
 
-- playerChat
+### playerChat
 > プレイヤーがチャットを送信した時
-**Properties**
-- sender
+#### Properties
+**sender**
 `read-only sender: Player;`
 チャットを送信したプレイヤー
 
-- message
+**message**
 `read-only message: string;`
 送信したメッセージ内容
 
-- tellChat
+### tellChat
 > プレイヤーへtellのチャットを送信した時
 EX) /tell, /tellraw
-**Properties**
-- sender
+#### Properties
+**sender**
 `read-only sender: string;`
 tellの送信者のネームタグ (プレイヤーの場合、頭上に表示に表示されている名前であり、ゲーマータグではないので注意)
 
-- receiver
+**receiver**
 `read-only receiver: string;`
 tellの受信者のネームタグ (senderと同様に注意)
 
-- message
+**message**
 `read-only message: string;`
 送信したメッセージ内容
 
-- playerJoin
+### playerJoin
 > プレイヤーの参加時
-**Properties**
-- player
+#### Properties
+**player**
 `read-only player: Player;`
 参加したプレイヤー
 
-- playerLeave
+### playerLeave
 > プレイヤーの退出時
-**Properties**
-- player
+#### Properties
+**player**
 `read-only player: Player;`
 退出したプレイヤー
 
-- error
+### error
 > エラーが発生した時
 `read-only event: Error`
 発生したエラー
 
-## 接続
+# 接続
 - 同じデバイス内で使用する場合、ループバック接続を許可してください。
 `CheckNetIsolation.exe LoopbackExempt -a -n="Microsoft.MinecraftUWP_8wekyb3d8bbwe"`
 
@@ -79,7 +79,7 @@ tellの受信者のネームタグ (senderと同様に注意)
 
 - 接続できない場合はファイアウォールの設定を確認してください 
 
-## 使用例
+# 使用例
 - マインクラフト内の`参加/退出`をコンソールに出力する
 ```js
 const { World } = require("kn-socket");
@@ -95,5 +95,5 @@ world.events.on("playerLeave", (event) => {
 })
 ```
 
-## License
+# License
 MIT License
